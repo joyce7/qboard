@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>Qian's Board</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<context-param>
+		<param-name>daemon</param-name>
+		<param-value> 
+    	CheckConnectStatusTask|*|+2|30|schedule.task.CheckConnectStatusTask,
+    	QryOLTEPMTask|*|10:10|1440|schedule.task.QryOLTEPMTask,
+    	NotifierTask|*|*|3|schedule.task.NotifierTask,
+    	MailInformAdminTask|*|17:56|1440|schedule.task.MailInformAdminTask,
+    	SyncAlarmTask|*|13:50|1440|schedule.task.SyncAlarmTask,
+		PurgeDataTask|*|12:00|1440|schedule.task.PurgeDataTask
+        </param-value>
+	</context-param>
+	
+    <context-param id="db_name">
+        <param-name>db_name</param-name>
+        <param-value>cqms</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db_names</param-name>
+        <param-value>cqms,cpams,cdoss</param-value>
+    </context-param>
+    <context-param id="is_dev">
+        <param-name>is_dev</param-name>
+        <param-value>true</param-value>
+    </context-param>
+    <context-param>
+        <param-name>n_ip</param-name>
+        <param-value>10.16.3.98</param-value>
+    </context-param>
+    <context-param>
+        <param-name>c_ip</param-name>
+        <param-value>10.59.15.50</param-value>
+    </context-param>
+	
+    <context-param>
+        <param-name>s_ip</param-name>
+        <param-value>10.97.72.25</param-value>
+    </context-param>
+    <context-param>
+        <param-name>log_props</param-name>
+        <param-value>log4j-rollingfiles2.properties</param-value>
+    </context-param>
+    <listener>
+        <listener-class>system.DaemonActivator</listener-class>
+    </listener>
+    <!--
+	SERVLETS DEFINITION BLOCK
+	-->
+	
+
+</web-app>
