@@ -10,13 +10,13 @@ public class CommandContainer
     private static final int WAIT_TIME = 1000;
     private static final int MAX_WAIT_TIME = 3000;
 
-    private HashMap _base = null;
-    private HashMap _cmds = null;
+    private HashMap<String, HttpCommand> _base = null;
+    private HashMap<String, CommandData[]> _cmds = null;
 
     public CommandContainer()
     {
-        _base = new HashMap();
-        _cmds = new HashMap();
+        _base = new HashMap<String, HttpCommand>();
+        _cmds = new HashMap<String, CommandData[]>();
     }
 
     public void putCommand(String cmdName, HttpCommand cmd) throws Exception
