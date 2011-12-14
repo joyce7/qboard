@@ -5,14 +5,8 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>Qian's Board</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-
 
 	<context-param>
 		<param-name>daemon</param-name>
@@ -62,6 +56,10 @@
         <servlet-name>UserMgrServlet</servlet-name>
         <servlet-class>me.qboard.servlet.control.UserMgrServlet</servlet-class>
     </servlet>
+	<servlet>
+        <servlet-name>MessageBoardServlet</servlet-name>
+        <servlet-class>me.qboard.servlet.control.MessageBoardServlet</servlet-class>
+    </servlet>
     <!--
 	SERVLETS MAPPING BLOCK
 	 -->
@@ -72,6 +70,10 @@
     <servlet-mapping>
         <servlet-name>UserMgrServlet</servlet-name>
         <url-pattern>/UserMgrServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessageBoardServlet</servlet-name>
+        <url-pattern>/MessageBoard</url-pattern>
     </servlet-mapping>
 	 
 	<!--  -->	 

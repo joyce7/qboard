@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class MessageBoardCommand extends HttpCommand {
     
-	private boolean requireLogin = false;
+	private boolean requireLogin = true;
 	private String next = null;   
 
 	public MessageBoardCommand(String next) {
