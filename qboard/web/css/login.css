@@ -1,0 +1,58 @@
+body {
+	vertical-align: middle;
+	text-align: center;
+	font-family: monospace;
+	font-size: 16px;	
+}
+
+form {
+	vertical-align: middle;
+}
+
+label ,input {
+	display: block;
+	float: left;
+	margin-bottom: 10px;
+}
+
+label {
+	text-align: right;
+	width: 48px;
+	padding-right: 8px;	
+}
+
+input {
+	color: black;
+	width: 150px;
+	font-family: sans-serif;
+	background:Gainsboro ;
+	border: 1px solid silver;
+}
+
+ input.submitbtn{
+	border-style:outset;
+	left: 56px;
+	position: relative;	
+}
+
+input.cmd{
+	visibility: hidden;
+}
+
+fieldset {
+	border: 1px solid grey;
+	width: 280px;
+	height: 180px;
+}
+
+legend {
+	color: black;S
+	background:#FFFFFFS;
+	border: 0px solid #781351;
+	padding: 2px 6px;
+	margin-bottom: 8px;
+}
+
+br {
+	clear: left;
+}

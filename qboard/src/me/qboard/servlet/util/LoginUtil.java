@@ -4,7 +4,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public class LoginUtil
 {
-    //private static final String USER_STRING = "userid";
     private static final String REQ_STRING = "url";
     private static final String REQ_ATTRS = "reqAttrs";
 

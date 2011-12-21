@@ -28,11 +28,11 @@
     </context-param>
     <context-param>
         <param-name>db_names</param-name>
-        <param-value>qbdb,qbdb2</param-value>
+        <param-value>qbdb</param-value>
     </context-param>
     <context-param id="is_dev">
         <param-name>is_dev</param-name>
-        <param-value>true</param-value>
+        <param-value>false</param-value>
     </context-param>
     <context-param>
         <param-name>qbdb_ip</param-name>
@@ -49,41 +49,31 @@
 	SERVLETS DEFINITION BLOCK
 	-->
 	<servlet>
-        <servlet-name>LoginMgrServlet</servlet-name>
-        <servlet-class>servlet.control.LoginMgrServlet</servlet-class>
+        <servlet-name>UserSessionControl</servlet-name>
+        <servlet-class>me.qboard.servlet.control.UserSessionControl</servlet-class>
     </servlet>
 	<servlet>
         <servlet-name>UserMgrServlet</servlet-name>
         <servlet-class>me.qboard.servlet.control.UserMgrServlet</servlet-class>
     </servlet>
 	<servlet>
-        <servlet-name>MessageBoardServlet</servlet-name>
-        <servlet-class>me.qboard.servlet.control.MessageBoardServlet</servlet-class>
+        <servlet-name>MessageBoardControl</servlet-name>
+        <servlet-class>me.qboard.servlet.control.MessageBoardControl</servlet-class>
     </servlet>
     <!--
 	SERVLETS MAPPING BLOCK
 	 -->
     <servlet-mapping>
-        <servlet-name>LoginMgrServlet</servlet-name>
-        <url-pattern>/LoginMgrServlet</url-pattern>
+        <servlet-name>UserSessionControl</servlet-name>
+        <url-pattern>/UserSession</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserMgrServlet</servlet-name>
-        <url-pattern>/UserMgrServlet</url-pattern>
+        <url-pattern>/UserMgr</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>MessageBoardServlet</servlet-name>
+        <servlet-name>MessageBoardControl</servlet-name>
         <url-pattern>/MessageBoard</url-pattern>
     </servlet-mapping>
 	 
-	<!--  -->	 
-	 
-    <resource-ref>
-        <res-ref-name>jdbc/qbdb</res-ref-name>
-        <res-type>javax.sql.DataSource</res-type>
-        <res-auth>Container</res-auth>
-    </resource-ref>
-	
-	
-
 </web-app>

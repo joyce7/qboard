@@ -13,7 +13,7 @@ public class UserMgrServlet extends Controller {
 
 	private CommandContainer container = null;
 
-    private final static String CMD_USER_MGT = "user_mgt";
+    private final static String CMD_USER_MGT = "main";
    
     private final static String PAGE_USER_MGT    = "/user_mgt.jsp";
     

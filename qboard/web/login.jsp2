@@ -1,0 +1,100 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"
+	import="me.qboard.dso.data.UserData"
+%>
+
+<% 
+     String errMsg = (String) request.getAttribute("err_msg"); 
+System.out.println("--->"+errMsg);
+     // Logged in?
+     UserData user = (UserData) session.getAttribute("user");
+     
+     // not Logged in
+     if  (user == null) 
+         user = (UserData) request.getAttribute("user");
+%>
+
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登入系統</title>
+<script LANGUAGE="JavaScript1.2">
+function checkKey (key, action) {
+
+   if  (key == 13) {
+       if (action == "go_next") {
+           document.fmLogin.password.focus();
+       } else if (action == "submit") {
+           submitform();
+       } else {
+       } 
+
+   }
+   
+}
+
+function alertMsg() {
+   <% if (errMsg != null) {%>
+      alert( "<%=errMsg%>" );
+   <% } else {%>
+   alert("aa");
+   <% }%>
+}
+
+function submitform(){
+  document.fmLogin.submit();
+  document.fmLogin.disabled = true;  
+}
+</script>
+</head>
+<body onload="javascropt:alertMsg();">
+	<table
+		style="text-align: left; width: 400px; height: 400px; margin-left: auto; margin-right: auto;"
+		cellpadding="2" cellspacing="2">
+		<caption></caption>
+		<tbody>
+			<tr>
+				<td style="vertical-align: middle;"><br>
+					<form name="fmLogin" method="post"
+						action="LoginMgr?cmd=login">
+						<p>
+							帳號：
+							<input name= "userid" type="TEXT" maxlength="24" size="12" 
+							onBlur="this.style.backgroundColor='#ffffff'"
+              				onFocus="this.style.backgroundColor='#ffffcc'"
+              				onMouseOver=this.focus() 
+              				onKeyDown="checkKey(window.event.keyCode,'go_next')"
+              				size=9
+              				style="BORDER-BOTTOM: #000066 1px solid; 
+              				BORDER-LEFT: #000066 1px solid; 
+              				BORDER-RIGHT: #000066 1px solid; 
+              				BORDER-TOP: #000066 1px solid; 
+              				COLOR: #000066; FONT-SIZE: 9pt">
+						</p>
+						<p>
+							密碼：
+							<input name = "password" type= "Password" maxlength= "24" size= "12"
+                 			onBlur="this.style.backgroundColor='#ffffff'"
+                 			onFocus="this.style.backgroundColor='#ffffcc'"
+                 			onMouseOver=this.focus() size=9
+                 			onKeyDown="checkKey(window.event.keyCode,'submit')"
+                 			style="BORDER-BOTTOM: #000066 1px solid; 
+                 			BORDER-LEFT: #000066 1px solid; 
+                 			BORDER-RIGHT: #000066 1px solid; 
+                 			BORDER-TOP: #000066 1px solid; 
+                 			COLOR: #000066; FONT-SIZE: 9pt">
+						</p>
+						<p>
+						<!--  
+						<input value="登入" type="submit">
+						-->
+						<a href="javascript:submitform();">《登入》</a>
+						</p>
+					</form></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

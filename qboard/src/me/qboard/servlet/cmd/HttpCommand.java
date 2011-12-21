@@ -1,6 +1,5 @@
 package me.qboard.servlet.cmd;
 
-//import javax.servlet.*;
 import javax.servlet.http.*;
 
 public abstract class HttpCommand implements Cloneable

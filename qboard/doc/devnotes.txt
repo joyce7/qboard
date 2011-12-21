@@ -1,0 +1,10 @@
+[Database]
+http://127.0.0.1:8080/apex/f?p=4950
+user:SYSTEM
+password:123456
+
+demo db
+user:hr
+password:123456
+
+oracle

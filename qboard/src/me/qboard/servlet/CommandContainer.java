@@ -40,10 +40,10 @@ public class CommandContainer
             {
                 cmdData.setUsed(true);
                 HttpCommand cmd = cmdData.getCommand();
-                return cmd; // ���i�Τ�Command
+                return cmd; 
             }
             else if (cmdData == null && firstWaitCmd == -1)
-                firstWaitCmd = i; // �O��Ĥ@��null��CommandData
+                firstWaitCmd = i; 
         }
 
         if (firstWaitCmd != -1)

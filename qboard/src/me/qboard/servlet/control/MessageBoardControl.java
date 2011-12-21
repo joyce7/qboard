@@ -5,7 +5,7 @@ import me.qboard.servlet.Controller;
 import me.qboard.servlet.cmd.HttpCommand;
 import me.qboard.servlet.cmd.MessageBoardCommand;
 
-public class MessageBoardServlet extends Controller {
+public class MessageBoardControl extends Controller {
     /**
 	 * 
 	 */
@@ -13,9 +13,9 @@ public class MessageBoardServlet extends Controller {
 
 	private CommandContainer container = null;
 
-    private final static String CMD_MESSAGE_BOARD = "message_board";
+    private final static String CMD_MESSAGE_BOARD = "main";
    
-    private final static String PAGE_MESSAGE_BOARD    = "/MessageBoard.jsp";
+    private final static String PAGE_MESSAGE_BOARD    = "/messageboard_main.jsp";
     
     
 
