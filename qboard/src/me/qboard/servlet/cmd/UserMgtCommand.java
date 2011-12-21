@@ -7,6 +7,8 @@ package me.qboard.servlet.cmd;
 
 import javax.servlet.http.HttpServletRequest;
 
+import me.qboard.dso.dao.UserDAO;
+
 /**
  * @author jc
  *
@@ -32,7 +34,10 @@ public class UserMgtCommand extends HttpCommand {
     }
 
     public String execute(HttpServletRequest request)throws HttpCommandException {
-
+    	
+    	UserDAO userDAO = new UserDAO();
+    	    	
+    	request.setAttribute("users", userDAO.getUsers());
         return _next;
     }
 

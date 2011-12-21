@@ -7,7 +7,7 @@ public class HttpCommandException extends Exception
     /**
 	 * 
 	 */
-	private static final long serialVersionUID = -6161777510406224317L;
+	
 	public static final int NOT_LOGIN_ERROR = 0;
     public static final int AUTH_ERROR = 1;
     public static final int EXEC_ERROR = 2;

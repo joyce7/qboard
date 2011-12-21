@@ -11,7 +11,7 @@ public class LoginCommand extends HttpCommand {
     private String next = null;
 
     public LoginCommand(String next) {
-        next = this.next;
+    	this.next = next;
     }
 
     public boolean requireLogin() {
@@ -31,17 +31,20 @@ public class LoginCommand extends HttpCommand {
 
         String userid = (String) request.getParameter("userid");
         String password = (String) request.getParameter("password");
-        String errMsg = null;
         
+        HttpSession session = null;
         
         if  (UserSessionUtil.isAuthenticated(userid, password)) {
-        	HttpSession session = request.getSession();
-        	session.setAttribute("user", new UserData(userid, "", "","","" ) );
+        	UserData user = new UserData(userid, "派大興", "","","" );
+        	session = request.getSession(true);
+        	session.setAttribute("user",  user);
+        	        	
+        	next = (String) session.getAttribute("url");
         } else {
-        	errMsg = "帳號或密碼錯誤";
+        	 throw new HttpCommandException (HttpCommandException.AUTH_ERROR,
+                     "Authentication Fail!");   
         }
                 
-        request.setAttribute("err_msg",errMsg);
         return next;
     }
 

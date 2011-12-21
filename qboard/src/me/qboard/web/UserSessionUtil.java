@@ -8,8 +8,9 @@ public class UserSessionUtil {
 	
 	
 	
-	public static boolean isAuthenticated(String uid, String password) {
-		return true;
+	public static boolean isAuthenticated(String userid, String password) {
+		
+		return ("abc".equals(userid)&& "123".equals(password))?true:false;
 	}
 	
 	

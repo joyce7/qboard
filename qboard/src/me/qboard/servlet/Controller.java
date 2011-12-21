@@ -18,9 +18,11 @@ abstract public class Controller extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -3776505831662057496L;
-	private static final String AUTH_ERROR_PAGE = "/error_not_permitted.jsp";
-    private static final String NOT_LOGIN_PAGE  = "/error_auto_back.jsp";
-    private static final String ERROR_PAGE      = "/error.jsp";
+ 
+    private static final String AUTH_ERROR_PAGE = "/login.jsp";
+    private static final String NOT_LOGIN_PAGE  = "/login.jsp";
+    private static final String ERROR_PAGE      = "/errorPages/error.jsp";
+   
     private String CUST_ERROR_PAGE ;
     
     abstract protected HttpCommand lookupCommand(String cmdString);
@@ -50,6 +52,11 @@ abstract public class Controller extends HttpServlet {
 
         HttpCommand cmd = lookupCommand(cmdString);
         try {
+        	
+            if (cmd==null) 
+                throw new HttpCommandException(HttpCommandException.EXEC_ERROR,
+                                               "找不到指令:"+cmdString);        	
+            
             
             if (cmd.requireLogin() && !LoginUtil.isLogin(request)) {
                 String uri = request.getRequestURI();
@@ -58,15 +65,16 @@ abstract public class Controller extends HttpServlet {
 
                 request.getSession().setAttribute("url",
                         uri + "?" + request.getQueryString());
+                
                 throw new HttpCommandException(
                         HttpCommandException.NOT_LOGIN_ERROR);
             }
 
-            // �v������
+            // NOT ALLOWED TO PERFORM ACCTION
             if (!cmd.isPermitted(request))
                 throw new HttpCommandException(HttpCommandException.AUTH_ERROR);
-
-            // �����HttpCommand���\��
+            
+            // RUN COMMAND
             next = cmd.execute(request);
             if (cmd.redirect())
                 response.sendRedirect(request.getContextPath() + next);
@@ -75,6 +83,7 @@ abstract public class Controller extends HttpServlet {
                         .getRequestDispatcher(next);
                 rd.forward(request, response);
             }
+            
         } catch (HttpCommandException e) {
             switch (e.getErrorType()) {
             case HttpCommandException.EXEC_ERROR:
@@ -82,10 +91,11 @@ abstract public class Controller extends HttpServlet {
                 next = ERROR_PAGE;
                 break;
             case HttpCommandException.AUTH_ERROR:
+            	request.setAttribute("msg", "帳號或密碼錯誤"); 
                 next = AUTH_ERROR_PAGE;
                 break;
             case HttpCommandException.NOT_LOGIN_ERROR:
-                request.setAttribute("msg", "NOT LOGGED IN");                
+                request.setAttribute("msg", "NOT_LOGIN");                
                 next = NOT_LOGIN_PAGE;
                 break;
             case HttpCommandException.CUST_ERROR:
@@ -93,10 +103,11 @@ abstract public class Controller extends HttpServlet {
                 next = CUST_ERROR_PAGE;
                 break;                
             }
-
+            
             RequestDispatcher rd = getServletContext().getRequestDispatcher(
                     next);
             rd.forward(request, response);
+            
         } catch (Exception ex) {
             next = ERROR_PAGE;
             request.setAttribute("msg", ex.toString());

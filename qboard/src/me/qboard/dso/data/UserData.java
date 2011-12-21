@@ -7,6 +7,21 @@ public class UserData {
 	private String mobile;
 	private String ophone;
 	private String hphone;	
+	private String password;
+	
+	public UserData(String uid, String uname, String mobile, String ophone,
+			String hphone, String password) {
+		super();
+		this.uid = uid;
+		this.uname = uname;
+		this.mobile = mobile;
+		this.ophone = ophone;
+		this.hphone = hphone;
+		this.password = password;
+	}
+
+
+
 	
 	public UserData() {
 
@@ -52,6 +67,17 @@ public class UserData {
 		return mobile;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	
 //	public boolean isSupervisor() {
 //
 //		if (this.id == null)

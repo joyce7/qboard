@@ -2,19 +2,13 @@ package me.qboard.dso.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.sql.Statement;
+import java.util.ArrayList;
 import me.qboard.dso.data.UserData;
 import me.qboard.system.ConnectionPoolHelper;
 
-/**
- * <p>Title: </p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2002</p>
- * <p>Company: </p>
- * @author unascribed
- * @version 1.0
- */
 
 public class UserDAO {
 
@@ -25,7 +19,46 @@ public class UserDAO {
     public UserDAO() {
 	}
 	
+	public ArrayList<UserData> getUsers () {
+		
+		ArrayList<UserData> al=new ArrayList<UserData>();
+		final Connection conn = ConnectionPoolHelper.getConnection("qbdb");
+		
+        Statement stmt = null;
+        ResultSet rs = null;   
+        UserData obj = null;
+        
+        try {
+            String qString = "SELECT userid, uname, ophone, hphone, mobile, password FROM member";            
+            stmt =conn.createStatement();           
+            rs=stmt.executeQuery(qString);
+            
+            while (rs.next()) {
+            	obj = new UserData (rs.getString("userid"),
+            						rs.getString("uname"),
+            						rs.getString("ophone"),
+            						rs.getString("hphone"),
+            						rs.getString("mobile"),
+            						rs.getString("password")
+            						);
+                al.add(obj);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                stmt.close();
+                ConnectionPoolHelper.freeConnection("qbdb",conn);
+            } catch (Exception ex) {
+                System.out.println("  ProjectDso ex " + ex);
+            }
+        }
 	
+		return al;
+	
+	}
+    
 	public boolean add(String empId, String sEmp) {
 
 //	    ChtEmployee emp = null;
