@@ -1,0 +1,32 @@
+* { padding: 0; margin: 0; }
+
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 13px;
+}
+#wrapper { 
+ margin: 0 auto;
+ width: 922px;
+}
+#leftcolumn { 
+ color: #333;
+ border: 1px solid #ccc;
+ background: #66839A;
+ margin: 10px 5px 10px 0px;
+ padding: 10px;
+ /* height: 500px; */
+ width: 482px;
+ float: left;
+}
+#rightcolumn { 
+ float: right;
+ color: #333;
+ border: 1px solid #ccc;
+ background: #F2F2E6;
+ margin: 10px 0px 10px 0px;
+ padding: 10px;
+ /*height: 500px; */
+ width: 390px;
+ display: inline;
+ position: relative;
+}
