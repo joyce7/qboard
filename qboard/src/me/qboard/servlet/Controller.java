@@ -47,7 +47,8 @@ abstract public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         String next = null;
-        //request.setCharacterEncoding("big5");
+        request.setCharacterEncoding("UTF-8");
+        
         String cmdString = request.getParameter("cmd");
 
         HttpCommand cmd = lookupCommand(cmdString);

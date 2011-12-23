@@ -1,16 +1,29 @@
 package me.qboard.web;
 
-public class UserSessionUtil {
+import me.qboard.dso.dao.UserDAO;
+import me.qboard.dso.data.UserData;
 
-	/**
-	 * @param args
-	 */
+public class UserSessionUtil implements UserLoginStatus {
+
 	
 	
-	
-	public static boolean isAuthenticated(String userid, String password) {
+	public static int authenticate(String userid, String password) {
 		
-		return ("abc".equals(userid)&& "123".equals(password))?true:false;
+		int stat = NO_USER;
+			
+		UserDAO dao = new UserDAO();
+		
+		UserData user = dao.get(userid);
+		
+		if ( user == null ) {
+		} else if ( user.getUid()!= userid ) {	
+		} else if ( user.getPassword()!= password ) {
+			stat = PASSWORD_NOT_MATCH;
+		} else {
+			stat = LOGIN;
+		}
+		
+		return stat;
 	}
 	
 	

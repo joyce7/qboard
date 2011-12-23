@@ -3,7 +3,9 @@ package me.qboard.servlet.cmd;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import me.qboard.dso.dao.UserDAO;
 import me.qboard.dso.data.UserData;
+import me.qboard.web.UserLoginStatus;
 import me.qboard.web.UserSessionUtil;
 
 public class LoginCommand extends HttpCommand {
@@ -34,16 +36,37 @@ public class LoginCommand extends HttpCommand {
         
         HttpSession session = null;
         
-        if  (UserSessionUtil.isAuthenticated(userid, password)) {
-        	UserData user = new UserData(userid, "派大興", "","","" );
-        	session = request.getSession(true);
+		UserDAO dao = new UserDAO();
+		
+		UserData user = dao.get(userid);
+		
+		if ( user == null ) {
+			throw new HttpCommandException (HttpCommandException.AUTH_ERROR,
+                    "Authentication Fail!");   
+		//} else if ( user.getUid()!= userid ) {	
+		//	throw new HttpCommandException (HttpCommandException.AUTH_ERROR,
+        //            "Authentication Fail!");   
+		} else if ( !password.equals(user.getPassword()) ) {
+			throw new HttpCommandException (HttpCommandException.AUTH_ERROR,
+                    "Authentication Fail!");   
+		} else {
+			session = request.getSession(true);
         	session.setAttribute("user",  user);
-        	        	
         	next = (String) session.getAttribute("url");
-        } else {
-        	 throw new HttpCommandException (HttpCommandException.AUTH_ERROR,
-                     "Authentication Fail!");   
-        }
+		}
+
+        
+//        if  ( UserSessionUtil.authenticate(userid, password) == UserLoginStatus.LOGIN ) {
+//        	
+//        	UserData user = new UserData(userid, "派大興", "","","" );
+//        	session = request.getSession(true);
+//        	session.setAttribute("user",  user);
+//        	        	
+//        	next = (String) session.getAttribute("url");
+//        } else {
+//        	 throw new HttpCommandException (HttpCommandException.AUTH_ERROR,
+//                     "Authentication Fail!");   
+//        }
                 
         return next;
     }
