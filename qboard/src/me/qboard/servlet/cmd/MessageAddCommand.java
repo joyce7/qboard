@@ -12,12 +12,12 @@ import me.qboard.dso.dao.MessageDAO;
 import me.qboard.dso.data.MessageData;
 
 
-public class MessageBoardCommand extends HttpCommand {
+public class MessageAddCommand extends HttpCommand {
     
 	private boolean requireLogin = true;
 	private String next = null;   
 
-	public MessageBoardCommand(String next) {
+	public MessageAddCommand(String next) {
 		this.next = next;	    
 	}
 
@@ -32,10 +32,14 @@ public class MessageBoardCommand extends HttpCommand {
     }
 
     public String execute(HttpServletRequest request)throws HttpCommandException {
-
-        MessageDAO dao = new MessageDAO();
-        ArrayList<MessageData> messages = dao.getMessages();
+    	
+    	MessageDAO dao = new MessageDAO();
+        dao.add((String) request.getParameter("title"), 
+        		(String) request.getParameter("body"),
+        		new java.sql.Date((new java.util.Date()).getTime()), 
+        		(String) request.getParameter("author"));
         
+        ArrayList<MessageData> messages = dao.getMessages();    
     	request.setAttribute("messages", messages);
     	
     	return this.next;

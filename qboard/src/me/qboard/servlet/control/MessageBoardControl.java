@@ -3,6 +3,7 @@ package me.qboard.servlet.control;
 import me.qboard.servlet.CommandContainer;
 import me.qboard.servlet.Controller;
 import me.qboard.servlet.cmd.HttpCommand;
+import me.qboard.servlet.cmd.MessageAddCommand;
 import me.qboard.servlet.cmd.MessageBoardCommand;
 
 public class MessageBoardControl extends Controller {
@@ -14,6 +15,7 @@ public class MessageBoardControl extends Controller {
 	private CommandContainer container = null;
 
     private final static String CMD_MESSAGE_BOARD = "main";
+    private final static String CMD_MESSAGE_ADD = "add";
    
     private final static String PAGE_MESSAGE_BOARD    = "/messageboard_main.jsp";
     
@@ -29,6 +31,9 @@ public class MessageBoardControl extends Controller {
 
             MessageBoardCommand messageBoardCommand = new MessageBoardCommand(PAGE_MESSAGE_BOARD);
             container.putCommand(CMD_MESSAGE_BOARD, messageBoardCommand);
+
+            MessageAddCommand messageAddCommand = new MessageAddCommand(PAGE_MESSAGE_BOARD);
+            container.putCommand(CMD_MESSAGE_ADD, messageAddCommand);
             
         } catch (Exception ex) {
             System.out.println(" MessageBoardCommand ex " + ex);

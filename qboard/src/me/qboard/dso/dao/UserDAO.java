@@ -19,6 +19,46 @@ public class UserDAO {
     public UserDAO() {
 	}
 	
+    public UserData get(String uid) {
+    	
+		final Connection conn = ConnectionPoolHelper.getConnection("qbdb");
+		
+        Statement stmt = null;
+        ResultSet rs = null;   
+        UserData data = null;
+        try {
+            String qString = "SELECT userid, uname, ophone, hphone, mobile, password " +
+            				 "FROM member WHERE userid='"+uid+"'";            
+            stmt =conn.createStatement();           
+            rs=stmt.executeQuery(qString);
+            
+            System.out.println("====>"+qString);
+            
+            while (rs.next()) {
+            	data = new UserData (rs.getString("userid"),
+            						 rs.getString("uname"),
+            						 rs.getString("ophone"),
+            						 rs.getString("hphone"),
+            						 rs.getString("mobile"),
+            						 rs.getString("password")
+            						 );
+            }//while
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                rs.close();
+                stmt.close();
+                ConnectionPoolHelper.freeConnection("qbdb",conn);
+            } catch (Exception ex) {
+                System.out.println("  UserDAO ex " + ex);
+            }
+        } 
+        
+        return data;
+    	
+    }
+    
 	public ArrayList<UserData> getUsers () {
 		
 		ArrayList<UserData> al=new ArrayList<UserData>();
