@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+.shiftcontainer{
+position: relative;
+left: 7px; /*Number should match -left shadow depth below*/
+top: 7px; /*Number should match -top shadow depth below*/
+}
+
+.shadowcontainer{
+width: 300px; /* container width*/
+background: transparent url('bigshadow.gif') no-repeat bottom right;
+margin-left: auto;
+margin-right: auto;
+margin-top: 6px;
+}
+
+.shadowcontainer .innerdiv{
+/* Add container height here if desired */
+background-color: white;
+border: 1px solid gray;
+padding: 6px;
+position: relative;
+left: -7px; /*shadow depth*/
+top: -7px /*shadow depth*/
+}
