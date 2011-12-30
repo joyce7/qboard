@@ -32,7 +32,7 @@ public class UserDAO {
             stmt =conn.createStatement();           
             rs=stmt.executeQuery(qString);
             
-            System.out.println("====>"+qString);
+            //System.out.println("====>"+qString);
             
             while (rs.next()) {
             	data = new UserData (rs.getString("userid"),
