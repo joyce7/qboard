@@ -61,6 +61,11 @@
         <servlet-class>me.qboard.servlet.control.MessageBoardControl</servlet-class>
     </servlet>
 	<servlet>
+        <servlet-name>LoginBot</servlet-name>
+        <servlet-class>me.qboard.servlet.LoginBot</servlet-class>
+    </servlet>
+
+	<servlet>
         <servlet-name>ActivityControl</servlet-name>
         <servlet-class>me.qboard.servlet.control.ActivityControl</servlet-class>
     </servlet>
@@ -78,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>MessageBoardControl</servlet-name>
         <url-pattern>/MessageBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginBot</servlet-name>
+        <url-pattern>/LoginBot</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ActivityControl</servlet-name>
