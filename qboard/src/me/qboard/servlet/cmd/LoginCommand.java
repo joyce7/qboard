@@ -5,8 +5,6 @@ import javax.servlet.http.HttpSession;
 
 import me.qboard.dso.dao.UserDAO;
 import me.qboard.dso.data.UserData;
-import me.qboard.web.UserLoginStatus;
-import me.qboard.web.UserSessionUtil;
 
 public class LoginCommand extends HttpCommand {
 

@@ -50,34 +50,6 @@ public class ConnectionPoolHelper {
                     + ") ConnectionPoolHelper freeConnection ERROR : " + ex);
         }
     }
-
-    public static Connection getQmsConnection() {
-        return getConnection(SystemInfo.DB_NAME);
-    }
-
-    public static void freeQmsConnection(Connection conn) {
-        freeConnection(SystemInfo.DB_NAME, conn);
-    }
-
-    public static Connection getPamsConnection() {
-        return getConnection(SystemInfo.DB_NAME.charAt(0) + "pams");
-    }
-
-    public static void freePamsConnection(Connection conn) {
-        if (SystemInfo.DB_NAME != null) {
-            freeConnection(SystemInfo.DB_NAME.charAt(0) + "pams", conn);
-        }
-    }
-    
-    public static Connection getDossConnection() {
-        return getConnection(SystemInfo.DB_NAME.charAt(0) + "doss");
-    }
-
-    public static void freeDossConnection(Connection conn) {
-        if (SystemInfo.DB_NAME != null) {
-            freeConnection(SystemInfo.DB_NAME.charAt(0) + "doss", conn);
-        }
-    }
     
 
 }
