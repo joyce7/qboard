@@ -60,6 +60,10 @@
         <servlet-name>MessageBoardControl</servlet-name>
         <servlet-class>me.qboard.servlet.control.MessageBoardControl</servlet-class>
     </servlet>
+	<servlet>
+        <servlet-name>ActivityControl</servlet-name>
+        <servlet-class>me.qboard.servlet.control.ActivityControl</servlet-class>
+    </servlet>
     <!--
 	SERVLETS MAPPING BLOCK
 	 -->
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>MessageBoardControl</servlet-name>
         <url-pattern>/MessageBoard</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ActivityControl</servlet-name>
+        <url-pattern>/Activity</url-pattern>
     </servlet-mapping>
 	 
 </web-app>

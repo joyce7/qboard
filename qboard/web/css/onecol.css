@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+.wrapper{
+   margin: 0px auto;
+   width: 480px;
+   background-color: #cccccc
+}
+.header{
+   float: left;
+   width: 100%;
+   background-color: #fffacd;
+}
+.content{
+   float: left;
+   width: 100%;
+   background-color: #fffacd
+}
+.footer{
+   float: left;
+   width: 100%;
+   background-color: #ffffcc
+}
+body {
+   padding: 0px;
+   margin: 0px;
+   font-size: 90%;
+   background-color: #ffffff
+}
