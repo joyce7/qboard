@@ -5,6 +5,7 @@ import me.qboard.servlet.Controller;
 import me.qboard.servlet.cmd.HttpCommand;
 import me.qboard.servlet.cmd.MessageAddCommand;
 import me.qboard.servlet.cmd.MessageBoardCommand;
+import me.qboard.servlet.cmd.RemoteMessageBoardCommand;
 
 public class MessageBoardControl extends Controller {
     /**
@@ -16,6 +17,7 @@ public class MessageBoardControl extends Controller {
 
     private final static String CMD_MESSAGE_BOARD = "main";
     private final static String CMD_MESSAGE_ADD = "add";
+    private final static String CMD_MESSAGE_REMOTE = "remote";
    
     private final static String PAGE_MESSAGE_BOARD    = "/messageboard_main.jsp";
     
@@ -31,6 +33,9 @@ public class MessageBoardControl extends Controller {
 
             MessageBoardCommand messageBoardCommand = new MessageBoardCommand(PAGE_MESSAGE_BOARD);
             container.putCommand(CMD_MESSAGE_BOARD, messageBoardCommand);
+
+            RemoteMessageBoardCommand remoteMessageBoardCommand = new RemoteMessageBoardCommand(PAGE_MESSAGE_BOARD);
+            container.putCommand(CMD_MESSAGE_REMOTE, remoteMessageBoardCommand);
 
             MessageAddCommand messageAddCommand = new MessageAddCommand(PAGE_MESSAGE_BOARD);
             container.putCommand(CMD_MESSAGE_ADD, messageAddCommand);
