@@ -62,9 +62,9 @@
 			<!-- 
 			<input type="button" id="msgBtn" value="送出" onClick="sendMsg()"/>
 			 -->
-			 <div align="right">--&nbsp;by ${user.uname}</div>
+			 <div align="right">--&nbsp;by ${user.membername}</div>
 			 <input type="hidden"  name="cmd" value="add" />
-			 <input type="hidden"  name="author" value="${user.uid}" />
+			 <input type="hidden"  name="author" value="${user.membername}" />
 			 <div align="center">
 			 <input type="submit" id="msgBtn" value="送出"  />
 			 </div>
