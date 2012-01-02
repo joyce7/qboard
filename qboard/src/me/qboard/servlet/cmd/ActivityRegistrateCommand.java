@@ -23,8 +23,7 @@ public class ActivityRegistrateCommand extends HttpCommand {
 	
 	@Override
 	public boolean requireLogin() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.requireLogin;
 	}
 
 	public boolean isRequireLogin() {
@@ -44,7 +43,11 @@ public class ActivityRegistrateCommand extends HttpCommand {
 		ActivityDAO dao = new ActivityDAO();
 		ActivityData data = dao.get(actid);
 		
+		//MemberDAO mdao = new MemberDAO();
+		// mdao.get(  ((MemberData) request.getSession().getAttribute("user")).getMemberid()   );
+		
 		request.setAttribute("activity", data);
+
 		return this.next;
 	}
 
