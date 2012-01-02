@@ -3,24 +3,7 @@ package me.qboard.dso.data;
 import java.util.Date;
 
 public class ActivityData {
-  /*
-   *     "ACTIVITYID"   NUMBER(4,0),
-    "ACTIVITYNAME" VARCHAR2(60 BYTE),
-    "ACTIVITYDATE" DATE,
-    "ACTIVITYTIME" TIMESTAMP (6),
-    "CITYID"         NUMBER(*,0),
-    "TOWNID"         NUMBER(*,0),
-    "ACTIVITYADDR"   VARCHAR2(60 BYTE),
-    "ACTIVITYBUDGET" NUMBER(*,0),
-    "ADULTNUM"       NUMBER(*,0),
-    "CHILDRENNUM"    NUMBER(*,0),
-    "APPLICATIONNUM" NUMBER(*,0),
-    "EMPLOYEEID" NCHAR(10),
-    "ATTENDANCEFEE" NUMBER(*,0),
-    "APPLICATIONBEGINDATE" DATE,
-    "APPLICATIONENDDATE" DATE
-   */
-	
+ 	
 	private int activityid;
 	private String activityname;
 	private Date activitydate;

@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import me.qboard.dso.dao.ActivityDAO;
 import me.qboard.dso.dao.MemberDAO;
-import me.qboard.dso.dao.MessageDAO;
+import me.qboard.dso.data.ActivityData;
 import me.qboard.dso.data.MemberData;
-import me.qboard.dso.data.MessageData;
 
 
-public class RemoteMessageBoardCommand extends HttpCommand {
+public class RemoteActivityCommand extends HttpCommand {
     
 	private boolean requireLogin = false;
 	private String next = null;   
 
-	public RemoteMessageBoardCommand(String next) {
+	public RemoteActivityCommand(String next) {
 		this.next = next;	    
 	}
 
@@ -44,7 +44,6 @@ public class RemoteMessageBoardCommand extends HttpCommand {
 		MemberData user = udao.get(userid);
 
     	if (user == null) {
-    		//throw new HttpCommandException(HttpCommandException.CUST_ERROR, "找不到使用者:"+ userid);
     		request.setAttribute("msg", "找不到使用者:"+ userid);
     		next = "/errorPages/error.jsp";
     	}else{
@@ -53,10 +52,10 @@ public class RemoteMessageBoardCommand extends HttpCommand {
     	}
     	
     	
-    	MessageDAO dao = new MessageDAO();
-        ArrayList<MessageData> messages = dao.getMessages();
+        ActivityDAO dao = new ActivityDAO();
+        ArrayList<ActivityData> activities = dao.getActivities();
         
-    	request.setAttribute("messages", messages);
+    	request.setAttribute("activities", activities);
     	
     	return this.next;
     }

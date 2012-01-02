@@ -23,7 +23,7 @@ public class SystemInfoInitializer {
         while (st.hasMoreTokens()) {
             String name = st.nextToken();
 			//
-			if (name.startsWith(SystemInfo.DB_NAME.substring(0,1)))
+			//if (name.startsWith(SystemInfo.DB_NAME.substring(0,1)))
          	   ConnectionPoolHelper.addDBPoolJNDI(name, "jdbc/" + name);
         }
     }
