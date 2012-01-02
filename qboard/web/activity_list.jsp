@@ -78,10 +78,16 @@
 		contenttype : [ 'inline' ]
 	//content setting ['inline'] or ['ajax', 'path_to_external_file']
 	});
+	
 </script>
-
+<script>
+function alertMsg(msg) {
+	   if( msg != null && msg != "" )
+		    alert(msg);
+}
+</script>
 </head>
-<body>
+<body onload="alertMsg('${msg}')">
 	<div class="heading"><big><b>線上活動報名</b></big></div>
 	<div id="mygallery" class="stepcarousel">
 		<div class="belt">
