@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" rel="StyleSheet" href="${pageContext.request.contextPath}/css/bubble.css" />
-<link type="text/css" rel="StyleSheet" href="${pageContext.request.contextPath}/css/twocols.css" />
+<link type="text/css" rel="StyleSheet" href="${pageContext.request.contextPath}/css/onecol.css" />
 <title>留言版</title>
 <style type="text/css">
  		label {
@@ -21,7 +21,7 @@
 		}
 		body {
 			/*color:MidnightBlue;
-			background-color:#66839A;*/ 
+			background-color:#66839A; */ 
 			margin:20px;
 			padding:0px;
 			font:11px verdana, arial, helvetica, sans-serif;
@@ -43,34 +43,35 @@
 	   <!-- Begin Wrapper -->
    <div id="wrapper">
 	
-	<div id="leftcolumn">
-				<c:forEach var="msg" items="${messages}">
-					<div class="sbl"><div class="sbr"><div class="stl"><div class="str">
-					${msg.body}
-					</div></div></div></div>
-					<div class="sb">${msg.author}&nbsp;於&nbsp;${msg.created_at}</div>
-				</c:forEach>
-	</div>
-	<div id="rightcolumn"> 
+	<div class="header" style="background-color:#66839A;width:600px">
 	<div id="formDiv">
 		<form method="post" id="messageForm" action="${pageContext.request.contextPath}/MessageBoard" >	
 			<div> 我要發言：</div>
-			<div align="right">
-			<textarea name="body" cols="40" rows="6" id="body">
+			<div align="left">
+			<textarea name="body" cols="40" rows="3" id="body">
 			</textarea>
 			</div>
 			<!-- 
 			<input type="button" id="msgBtn" value="送出" onClick="sendMsg()"/>
 			 -->
-			 <div align="right">--&nbsp;by ${user.membername}</div>
-			 <input type="hidden"  name="cmd" value="add" />
-			 <input type="hidden"  name="author" value="${user.membername}" />
-			 <div align="center">
-			 <input type="submit" id="msgBtn" value="送出"  />
+			 <div align="left">--&nbsp;by ${user.membername}&nbsp;&nbsp;
+			     <input type="submit" id="msgBtn" value="送出" />
 			 </div>
+			 <input type="hidden"  name="cmd" value="add" />
+			 <input type="hidden"  name="author" value="${user.membername}" />&nbsp;
 		</form>
 	</div>
 	</div>
+	<div class="content" style="background-color:#66839A;width:600px">
+	  <c:forEach var="msg" items="${messages}">
+			<div class="sbl"><div class="sbr"><div class="stl"><div class="str">
+					${msg.body}
+					</div></div></div></div>
+			<div class="sb">${msg.author}&nbsp;於&nbsp;${msg.created_at}</div>
+	  </c:forEach>
 	</div>
+		<div class="footer" style="background-color:#66839A;width:600px">&nbsp;</div>
+	</div>
+
 </body>
 </html>

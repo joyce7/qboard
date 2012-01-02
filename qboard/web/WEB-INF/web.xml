@@ -28,7 +28,7 @@
     </context-param>
     <context-param>
         <param-name>db_names</param-name>
-        <param-value>qbdb</param-value>
+        <param-value>qbdb,mssqldb</param-value>
     </context-param>
     <context-param id="is_dev">
         <param-name>is_dev</param-name>
