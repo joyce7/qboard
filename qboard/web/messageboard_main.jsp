@@ -58,7 +58,7 @@
 			     <input type="submit" id="msgBtn" value="送出" />
 			 </div>
 			 <input type="hidden"  name="cmd" value="add" />
-			 <input type="hidden"  name="author" value="${user.membername}" />&nbsp;
+			 <input type="hidden"  name="author" value="${user.memberid}" />&nbsp;
 		</form>
 	</div>
 	</div>
@@ -67,7 +67,11 @@
 			<div class="sbl"><div class="sbr"><div class="stl"><div class="str">
 					${msg.body}
 					</div></div></div></div>
-			<div class="sb">${msg.author}&nbsp;於&nbsp;${msg.created_at}</div>
+			<div class="sb">${msg.author}&nbsp;於&nbsp;${msg.created_at}
+			<c:if test="${msg.author == user.memberid}">
+			    &nbsp;&nbsp;<a href="MessageBoard?cmd=del&msgid=${msg.id}">[X]</a> 
+			</c:if>
+			</div>
 	  </c:forEach>
 	</div>
 		<div class="footer" style="background-color:#66839A;width:600px">&nbsp;</div>

@@ -60,6 +60,7 @@ public class MessageDAO {
 		PreparedStatement preparedStatement = null;
 		String query = "INSERT INTO messages"+
 		               " VALUES(seq_messages.NEXTVAL,?,?,?,?)";
+
 		
 		try {
 			connection =
