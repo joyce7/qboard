@@ -69,7 +69,10 @@
 					</div></div></div></div>
 			<div class="sb">${msg.author}&nbsp;於&nbsp;${msg.created_at}
 			<c:if test="${msg.author == user.memberid}">
-			    &nbsp;&nbsp;<a href="MessageBoard?cmd=del&msgid=${msg.id}">[X]</a> 
+			    &nbsp;&nbsp;<a href="MessageBoard?cmd=del&msgid=${msg.id}" style="font: normal;">
+			    <img src="images/trash.gif" alt="刪除這則留言" 
+			    onmouseover="this.src='images/trash_r.gif'" 
+			    onmouseout="this.src='images/trash.gif'"></a> 
 			</c:if>
 			</div>
 	  </c:forEach>
