@@ -107,4 +107,54 @@ public class MessageDAO {
 		
 	}
 
+	public boolean remove(int msgid) {
+		
+		boolean isSuccess = false;
+		
+	    Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		String query = "DELETE FROM messages"+
+		               " WHERE id=?";
+
+		
+		try {
+			connection =
+				ConnectionPoolHelper.getConnection("qbdb");
+
+			preparedStatement =
+				connection.prepareStatement(query);	
+			preparedStatement.setInt(1, msgid);
+			
+			preparedStatement.executeUpdate();
+			
+			isSuccess = true;
+			// Handle any SQL errors
+		} catch (SQLException e) {
+
+			throw new RuntimeException(
+				"A database error occured. " + e.getMessage());
+
+		} finally {
+
+		    if (preparedStatement != null) {
+				try {
+					preparedStatement.close();
+				} catch (SQLException se) {
+					se.printStackTrace(System.err);
+				}
+			}
+			if (connection != null) {
+				try {
+					ConnectionPoolHelper.freeConnection("qbdb",
+						connection);
+				} catch (Exception e) {
+	                System.out.println(this.getClass().getName()+ " ex " + e);
+				}
+			}
+
+		} // t-c-f
+		
+		return isSuccess;
+		
+	}
 }
