@@ -9,30 +9,6 @@
 <link type="text/css" rel="StyleSheet" href="${pageContext.request.contextPath}/css/onecol.css" />
 <title>留言版</title>
 <style type="text/css">
- 		label {
-			float: left;
-			text-align: right;
-			margin-right: 15px;
-			width: 100px;
-		}
-		#messageTableHead {
-			font-weight: 900;
-			color:navy;
-		}
-		body {
-			/*color:MidnightBlue;
-			background-color:#66839A; */ 
-			margin:20px;
-			padding:0px;
-			font:11px verdana, arial, helvetica, sans-serif;
-		}
-		.pageTitle {
-			margin:0px 0px 15px 0px;
-			padding:0px;
-			font-size:28px;
-			font-weight:900;
-			color:#aaa;
-		}
 		#formDiv{
 			padding-top:12px;
 			color:Indigo;
@@ -41,9 +17,9 @@
 </head>
 <body>
 	   <!-- Begin Wrapper -->
-   <div id="wrapper">
+   <div id="wrapper" style="width:600px; margin: auto;">
 	
-	<div class="header" style="background-color:#66839A;width:600px">
+	<div class="header">
 	<div id="formDiv">
 		<form method="post" id="messageForm" action="${pageContext.request.contextPath}/MessageBoard" >	
 			<div> 我要發言：</div>
@@ -62,22 +38,23 @@
 		</form>
 	</div>
 	</div>
-	<div class="content" style="background-color:#66839A;width:600px">
+	<div class="content" style="background-color: white;" >
 	  <c:forEach var="msg" items="${messages}">
-			<div class="sbl"><div class="sbr"><div class="stl"><div class="str">
+			<div class="sbl2"><div class="sbr2"><div class="stl2"><div class="str2">
 					${msg.body}
 					</div></div></div></div>
-			<div class="sb">${msg.author}&nbsp;於&nbsp;${msg.created_at}
+			<div class="sb2"><img class="character" src="images/330.gif" alt="" />
+			&nbsp;&nbsp;${msg.author}&nbsp;於&nbsp;${msg.created_at}
 			<c:if test="${msg.author == user.memberid}">
-			    &nbsp;&nbsp;<a href="MessageBoard?cmd=del&msgid=${msg.id}" style="font: normal;">
-			    <img src="images/trash.gif" alt="刪除這則留言" 
+			    &nbsp;&nbsp;<a href="MessageBoard?cmd=del&msgid=${msg.id}" style="text-decoration:none" >
+			    <img border="0" src="images/trash.gif" alt="刪除這則留言" 
 			    onmouseover="this.src='images/trash_r.gif'" 
 			    onmouseout="this.src='images/trash.gif'"></a> 
 			</c:if>
 			</div>
 	  </c:forEach>
 	</div>
-		<div class="footer" style="background-color:#66839A;width:600px">&nbsp;</div>
+		<div class="footer">&nbsp;</div>
 	</div>
 
 </body>
