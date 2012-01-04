@@ -17,7 +17,7 @@
 </head>
 <body>
 	   <!-- Begin Wrapper -->
-   <div id="wrapper" style="width:600px; margin: auto;">
+   <div id="wrapper" style="width:480px; margin: auto;">
 	
 	<div class="header">
 	<div id="formDiv">
@@ -39,6 +39,8 @@
 	</div>
 	</div>
 	<div class="content" style="background-color: white;" >
+	<div style="position: relative; height: 300px; width: 472px;">
+	  <div style="overflow: auto; height: 100%; width: 100%;" >
 	  <c:forEach var="msg" items="${messages}">
 			<div class="sbl2"><div class="sbr2"><div class="stl2"><div class="str2">
 					${msg.body}
@@ -53,6 +55,8 @@
 			</c:if>
 			</div>
 	  </c:forEach>
+	  </div>
+	</div>
 	</div>
 		<div class="footer">&nbsp;</div>
 	</div>

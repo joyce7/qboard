@@ -1,4 +1,4 @@
-.character { margin-top: 6px; }
+.character { margin-top: 2px; }
 
 .sbl { background: url('bl.gif') bottom left no-repeat #EDEDED; width: 30%; text-align: center; min-width: 360px; }
 .sbr { background: url('br.gif') bottom right no-repeat; }
@@ -7,7 +7,7 @@
 .sb { padding: 2px 0px 10px 50px; background: url('b.gif') 30px top no-repeat; }
 
 .container { background: #FFFFFF;  width: 80%; padding: 10px; }
-.sbl2 { background: url('bl2.gif') bottom left no-repeat #E9E9E9; width: 30%; text-align: center;  min-width: 360px; }
+.sbl2 { background: url('bl2.gif') bottom left no-repeat #B9DCFF; width: 30%; text-align: center;  min-width: 360px; }
 .sbr2 { background: url('br2.gif') bottom right no-repeat; }
 .stl2 { background: url('tl2.gif') top left no-repeat; }
 .str2 { background: url('tr2.gif') top right no-repeat; padding: 10px; } 
