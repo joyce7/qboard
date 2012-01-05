@@ -12,8 +12,9 @@
 
 function limitChars(limit){
 
+	　
 var text = $('#message').val(); 
-var textlength = text.length;
+var textlength = text.length;;
 
 $('#count').html(textlength);
 
