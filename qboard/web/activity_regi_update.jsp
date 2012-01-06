@@ -39,29 +39,18 @@ function alertMsg(msg) {
 		    alert(msg);
 	}
 	
-function checkDateWithin() {
-    
-    b = Date.parse("${activity.applicationbegindate}");
-    e = Date.parse("${activity.applicationenddate}");
-    c = new Date();
-    if( (c <= e) && (c >= b) ) { 
-    } else { // not within days
-    	document.getElementById("inpsubmit").disabled=true;    
-    	document.getElementById("errmsg").style.visibility = 'visible'; 
-    }
-    
-    if ( "${pcount.applicationadult}" >= "${activity.adultnum}"  && 
-    	 "${pcount.applicationchildren}" >= "${activity.childrennum}") {
-    	document.getElementById("inpsubmit").disabled=true;    
-    	document.getElementById("errmsg2").style.visibility = 'visible';     	
-    } 
+function submitCancelForm() {
+	
+	var isConfirm=confirm("確定要取消報名嗎？");
+	if ( isConfirm=confirm == true) {
+		document.forms["frmCancel"].submit();	
+	}	
 	
 }
-
-
+	
 </script>
 </head>
-<body onload="alertMsg('${msg}');checkDateWithin();">
+<body onload="alertMsg('${msg}');">
 	<div class="wrapper">
 		<div class="header">
 			<div id="banner">
@@ -72,9 +61,10 @@ function checkDateWithin() {
 							<br /> 活動日期：${activity.activitydate}
 							<br /> 活動地點：${activity.activityaddr}
 							<br /> 報名期間：${activity.applicationbegindate}～${activity.applicationenddate}
-							<br /> 活動費用：${activity.attendancefee}
+							<br /> 活動費用：${activity.attendancefee}				
 							<br /> 人數限制：${activity.adultnum}(大人)&nbsp;|&nbsp;${activity.childrennum}(小孩)		
 							<br /> 累計人數：${pcount.applicationadult}(大人)&nbsp;|&nbsp;${pcount.applicationchildren}(小孩)						
+												
 						</div>
 					</div>
 				</div>
@@ -92,39 +82,42 @@ function checkDateWithin() {
 			
 				<p>
 					<label for="membername">姓名</label> 
-					<input name="membername" type="text" id="membername" value="" />
+					<input name="membername" type="text" id="membername" value="${user.membername}" />
 				</p>
 				<p>
 					<label for="emailaddress">Email：</label> 
-					<input type="text" id="emailaddress" name="emailaddress" value="" />
+					<input type="text" id="emailaddress" name="emailaddress" value="${user.memberemail}" />
 				</p>
 				<p>
 					<label for="phonenum">聯絡電話：</label> 
-					<input type="text" name="phonenum" id="phonenum" value="" />（ 行動或市話）
+					<input type="text" name="phonenum" id="phonenum" value="${user.cellphone}" />（ 行動或市話）
 				</p>
 				<p>
 					<label for="address">通訊地址：</label>
-					<input type="text" name="address" id="address" value="" />
+					<input type="text" name="address" id="address" value="${user.memberaddr}" />
 				</p>
 				<p>
 					<label for="adultnum">大人人數：</label> 
-					<input type="text"	name="adultnum" id="adultnum" value="" />
+					<input type="text"	name="adultnum" id="adultnum" value="${activitydetail.applicationadult}" />
 				</p>
 				<p>
 					<label for="kidnum">12歲以下人數：</label> 
-					<input type="text" name="kidnum" id="kidnum" value="" />
+					<input type="text" name="kidnum" id="kidnum" value="${activitydetail.applicationchildren}" />
 				</p>
 				<div style="margin-left: 150px;">
-					<input id="inpsubmit" type="submit" value="送出" />&nbsp;<a href="Activity?cmd=list"><button>取消</button></a>
+					<input id="inpsubmit" type="submit" value="更新" />&nbsp;<a href="Activity?cmd=list"><button>取消</button></a>
 				</div>
 				<input name="actid" value="${activity.activityid}" type="hidden" />
-				<input name="cmd" value="add_registr" type="hidden" />
+				<input name="cmd" value="update_registr" type="hidden" />
 			</form>
-
 		</div>
 		<div class="footer">
-			<div id="errmsg" style="color: red;visibility: hidden; text-align: center;" >不在報名日期範圍。</div>
-			<div id="errmsg2" style="color: red;visibility: hidden; text-align: center;" >報名額滿。</div>
+				<form name="frmCancel" id="frmCancel" class="cssform" 
+			      method="post"  action="${pageContext.request.contextPath}/Activity">
+			      <button onclick="submitcanelform();">取消報名</button>
+			      <input name="cmd" value="cancel_registr" type="hidden"/>
+			      <input name="actid" value="${activity.activityid}" type="hidden" />
+			      </form>
 		</div>
 	</div>
 </body>
