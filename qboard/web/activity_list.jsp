@@ -11,11 +11,6 @@
 	src="${pageContext.request.contextPath}/js/jquery-1.3.2.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/stepcarousel.js">
-	/***********************************************
-	 * Step Carousel Viewer script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
-	 * Visit http://www.dynamicDrive.com for hundreds of DHTML scripts
-	 * This notice must stay intact for legal use
-	 ***********************************************/
 </script>
 
 <style type="text/css">
