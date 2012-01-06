@@ -75,7 +75,7 @@ public class ActivityDAO {
 		return al;		
 	}
 
-	public ActivityData get(String actid) {
+	public ActivityData get(int actid) {
 
 		final Connection conn = ConnectionPoolHelper.getConnection("qbdb");
 		
@@ -89,7 +89,7 @@ public class ActivityDAO {
                                               .append("childrennum,applicationnum,employeeid,attendancefee,")
                                               .append("applicationbegindate,applicationenddate ")
                                               .append("FROM activity ")
-                                              .append("WHERE activityid='").append(actid).append("'");
+                                              .append("WHERE activityid=").append(actid);
 
         	
         	stmt =conn.createStatement();           

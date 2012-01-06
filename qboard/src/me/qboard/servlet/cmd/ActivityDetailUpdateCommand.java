@@ -12,12 +12,12 @@ import me.qboard.dso.data.MemberData;
 
 
 
-public class ActivityDetailAddCommand extends HttpCommand {
+public class ActivityDetailUpdateCommand extends HttpCommand {
     
 	private boolean requireLogin = true;
 	private String next = null;   
 
-	public ActivityDetailAddCommand(String next) {
+	public ActivityDetailUpdateCommand(String next) {
 		this.next = next;	    
 	}
 
@@ -36,21 +36,20 @@ public class ActivityDetailAddCommand extends HttpCommand {
     	ActivityDetailDAO dao = new ActivityDetailDAO();
 
     	
-    	if (dao.add(  
+    	if (dao.update(  
     			Integer.parseInt(request.getParameter("actid")),
     			((MemberData) request.getSession().getAttribute("user")).getMemberid(), 
         		Integer.parseInt(request.getParameter("adultnum")) , 
-        		Integer.parseInt(request.getParameter("kidnum")))
+        		Integer.parseInt(request.getParameter("kidnum"))) > 0
         	) {
     		
     		ActivityDAO dao2 = new ActivityDAO();
     		request.setAttribute("activities", dao2.getActivities());
-    		request.setAttribute("msg", "報名成功!!");
+    		request.setAttribute("msg", "更新成功!!");
     		this.next = "/activity_list.jsp";
-   
     	}else {
     		request.setAttribute("activity", request.getParameter("actid"));
-    		request.setAttribute("msg", "報名失敗!");
+    		request.setAttribute("msg", "更新失敗!");
     		this.next = "/activity_regi.jsp";
     	}
     	return this.next;
