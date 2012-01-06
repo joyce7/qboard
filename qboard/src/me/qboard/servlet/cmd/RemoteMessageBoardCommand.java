@@ -50,6 +50,7 @@ public class RemoteMessageBoardCommand extends HttpCommand {
     	}else{
     		session = request.getSession(true);
     		session.setAttribute("user", user);
+    		next = "/messageboard_main.jsp";
     	}
     	
     	

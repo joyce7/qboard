@@ -49,6 +49,7 @@ public class RemoteActivityCommand extends HttpCommand {
     	}else{
     		session = request.getSession(true);
     		session.setAttribute("user", user);
+    		next = "/activity_list.jsp";
     	}
     	
     	

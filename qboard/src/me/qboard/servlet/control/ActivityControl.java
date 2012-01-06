@@ -3,6 +3,8 @@ package me.qboard.servlet.control;
 import me.qboard.servlet.CommandContainer;
 import me.qboard.servlet.Controller;
 import me.qboard.servlet.cmd.ActivityDetailAddCommand;
+import me.qboard.servlet.cmd.ActivityDetailRemoveCommand;
+import me.qboard.servlet.cmd.ActivityDetailUpdateCommand;
 import me.qboard.servlet.cmd.ActivityListCommand;
 import me.qboard.servlet.cmd.ActivityRegistrateCommand;
 import me.qboard.servlet.cmd.HttpCommand;
@@ -20,11 +22,15 @@ public class ActivityControl extends Controller {
 	private final static String CMD_LIST = "list";
     private final static String CMD_REGISTR = "registrate";
     private final static String CMD_ADD_REGISTR = "add_registr";
+    private final static String CMD_UPDATE_REGISTR = "update_registr";
+    private final static String CMD_CANCEL_REGISTR = "cancel_registr";
    
     private final static String PAGE_REMOTE    = "/activity_list.jsp";
     private final static String PAGE_LIST      = "/activity_list.jsp";
     private final static String PAGE_REGISTR    = "/activity_regi.jsp";
-    private final static String PAGE_ADD_REGISTR    = "/activity_list.jsp";    
+    private final static String PAGE_ADD_REGISTR    = "/activity_list.jsp";
+    private final static String PAGE_UPDATE_REGISTR    = "/activity_list.jsp";
+    private final static String PAGE_CANCEL_REGISTR    = "/activity_list.jsp";
 
     protected HttpCommand lookupCommand(String cmdString) {
         return container.getCommand(cmdString);
@@ -45,7 +51,13 @@ public class ActivityControl extends Controller {
             
             ActivityDetailAddCommand activityDetailAddCommand = new ActivityDetailAddCommand(PAGE_ADD_REGISTR);
             container.putCommand(CMD_ADD_REGISTR, activityDetailAddCommand);
+            
+            ActivityDetailUpdateCommand activityDetailUpdateCommand = new ActivityDetailUpdateCommand(PAGE_UPDATE_REGISTR);
+            container.putCommand(CMD_UPDATE_REGISTR, activityDetailUpdateCommand);
 
+            ActivityDetailRemoveCommand activityDetailRemoveCommand = new ActivityDetailRemoveCommand(PAGE_CANCEL_REGISTR);
+            container.putCommand(CMD_CANCEL_REGISTR, activityDetailRemoveCommand);
+            
         } catch (Exception ex) {
             System.out.println(" MessageBoardCommand ex " + ex);
         }
